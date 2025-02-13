@@ -123,3 +123,11 @@ func Login(c *gin.Context) {
 		},
 	})
 }
+
+func Logout(c *gin.Context) {
+	// Klien cukup menghapus token di sisi mereka
+	c.JSON(http.StatusOK, gin.H{
+		"status":  200,
+		"message": "Logout berhasil",
+	})
+}
