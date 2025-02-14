@@ -14,7 +14,10 @@ func SetupRouter() *gin.Engine {
 		auth.POST("/register", handlers.Register) // Pastikan ini ada
 		auth.POST("/login", handlers.Login)       // Pastikan ini ada
 		r.POST("/logout", handlers.Logout)
-
+	}
+	cars := r.Group("/cars")
+	{
+		cars.GET("/", handlers.GetCars)
 	}
 
 	return r
