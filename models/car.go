@@ -15,5 +15,13 @@ type Car struct {
     ImageURL     string    `json:"image_url"`
     DeletedAt    *time.Time `json:"deleted_at"`
     AverageRating float64   `json:"average_rating" gorm:"type:decimal(3,2)"`
+
+        // New Fields
+        TypeCar       string     `json:"type_car" gorm:"type:enum('Sport','SUV','Hatchback','Sedan','MPV')"`
+        Steering      string     `json:"steering"`       // "Automatic" or "Manual"
+        Capacity      int        `json:"capacity"`       // Number of passengers
+        GasolineCap   int        `json:"gasoline_cap"`   // Fuel capacity
+        Description   string     `json:"description"`    // Additional details
+
     Reviews      []Review  `json:"reviews" gorm:"foreignKey:ProductID;references:ID"` // Relasi ke tabel Review
 }
