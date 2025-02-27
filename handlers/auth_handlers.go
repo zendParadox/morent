@@ -42,31 +42,6 @@ func Register(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"message": "User registered successfully"})
 }
 
-// func Login(c *gin.Context) {
-// 	var requestUser models.User
-// 	var dbUser models.User
-
-// 	// Bind JSON dari request ke struct User
-// 	if err := c.ShouldBindJSON(&requestUser); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
-// 		return
-// 	}
-
-// 	// Cek apakah user ada di database
-// 	if err := database.DB.Where("email = ?", requestUser.Email).First(&dbUser).Error; err != nil {
-// 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
-// 		return
-// 	}
-
-// 	// Cek password
-// 	if err := bcrypt.CompareHashAndPassword([]byte(dbUser.Password), []byte(requestUser.Password)); err != nil {
-// 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid email or password"})
-// 		return
-// 	}
-
-// 	// Jika berhasil login
-// 	c.JSON(http.StatusOK, gin.H{"message": "Login successful", "user": dbUser})
-// }
 func Login(c *gin.Context) {
 	var loginData struct {
 		Email    string `json:"email"`
